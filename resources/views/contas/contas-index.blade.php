@@ -60,6 +60,7 @@
                                     <th width="140">Situação</th>
                                     <th width="140" class="text-center">Entrada</th>
                                     <th width="140" class="text-center">Saída</th>
+                                    <th width="140" class="text-center">Pago</th>
                                     <th width="220" style="text-align:center">Ações</th>
                                 </tr>
                             </thead>
@@ -93,7 +94,7 @@
                                             @endif
                                         </h4>
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         @if ($conta->tipoConta == 'R')
                                         <span class="label-red">
                                             {{ 'R$ '.number_format($conta->valor, 2, ',', '.') }}
@@ -102,7 +103,7 @@
                                         <span>-</span>
                                         @endif
                                     </td>
-                                    <td style="color:red">
+                                    <td class="text-center" style="color:red">
                                         @if ($conta->tipoConta == 'P')
                                         <span class="label-red">
                                             {{ 'R$ '.number_format($conta->valor, 2, ',', '.') }}
@@ -110,6 +111,9 @@
                                         @else
                                         <span>-</span>
                                         @endif
+                                    </td>
+                                    <td class="text-center">
+                                        0
                                     </td>
                                     <td class="table-action ">
                                         <form action="{{ route('contas.destroy', $conta->id) }}" style="text-align:center" method="post">
@@ -146,60 +150,79 @@
 
 <div class="row">
     <div class="col-xxl-3 col-sm-6">
-        <div class="card widget-flat">
+        <div class="card widget-flat border border-primary">
             <div class="card-body">
                 <div class="float-end">
-                    <i class="mdi mdi-currency-btc widget-icon bg-danger rounded-circle text-white"></i>
+                    <i class="mdi mdi-currency-usd widget-icon bg-primary rounded-circle text-white"></i>
                 </div>
-                <h5 class="text-muted fw-normal mt-0" title="Revenue">Total de Entradas</h5>
-                <h3 class="mt-3 mb-3">
+                <h5 class="text-muted fw-normal mt-0" title="Revenue">Contas a Receber</h5>
+                <h3 class="mt-1 mb-1">
                     {{ 'R$ '.number_format( $entradas, 2, ',', '.') }}
                 </h3>
-                <p class="mb-0 text-muted">
+                <!-- <p class="mb-0 text-muted">
                     <span class="badge bg-info me-1">
                         <i class="mdi mdi-arrow-down-bold"></i> 7.00%</span>
                     <span class="text-nowrap">Since last month</span>
-                </p>
+                </p> -->
             </div>
         </div>
     </div> <!-- end col-->
 
     <div class="col-xxl-3 col-sm-6">
-        <div class="card widget-flat">
+        <div class="card widget-flat bg-primary text-white ">
             <div class="card-body">
                 <div class="float-end">
-                    <i class="mdi mdi-pulse widget-icon"></i>
+                    <i class="mdi mdi-currency-usd widget-icon  rounded-circle bg-white text-primary"></i>
                 </div>
-                <h5 class="text-muted fw-normal mt-0" title="Growth">Total de Saídas</h5>
-                <h3 class="mt-3 mb-3">
-                    {{ 'R$ '.number_format( $saidas, 2, ',', '.') }}
-                </h3>
-                <p class="mb-0 text-muted">
+                <h6 class="text-uppercase mt-0" title="Customers">RECEBIDOS</h6>
+                <h3 class="mt-1 mb-1">36,254</h3>
+                <!-- <p class="mb-0">
+                <span class="badge badge-light-lighten me-1">
+                    <i class="mdi mdi-arrow-up-bold"></i> 5.27%</span>
+                <span class="text-nowrap">Since last month</span>
+            </p> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-3 col-sm-6">
+        <div class="card widget-flat border border-danger">
+            <div class="card-body">
+                <div class="float-end">
+                    <i class="mdi mdi-currency-usd-off widget-icon bg-danger text-white""></i>
+                </div>
+                <h5 class=" text-muted fw-normal mt-0" title="Growth">Contas a Pagar</h5>
+                        <h3 class="mt-1 mb-1">
+                            {{ 'R$ '.number_format( $saidas, 2, ',', '.') }}
+                        </h3>
+                        <!-- <p class="mb-0 text-muted">
                     <span class="text-success me-2">
                         <i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
                     <span class="text-nowrap">Since last month</span>
-                </p>
-            </div>
-        </div>
-    </div> <!-- end col-->
-
-    <div class="col-xxl-3 col-sm-6">
-        <div class="card widget-flat bg-success text-white">
-            <div class="card-body">
-                <div class="float-end">
-                    <i class="mdi mdi-account-multiple widget-icon bg-white text-success"></i>
+                </p> -->
                 </div>
-                <h6 class="text-uppercase mt-0" title="Customers">Stone</h6>
-                <h3 class="mt-3 mb-3">36,254</h3>
-                <p class="mb-0">
+            </div>
+        </div> <!-- end col-->
+
+        <div class="col-xxl-3 col-sm-6">
+            <div class="card widget-flat bg-danger text-white">
+                <div class="card-body">
+                    <div class="float-end">
+                        <i class="mdi mdi-currency-usd-off widget-icon bg-white text-danger"></i>
+                    </div>
+                    <h6 class="text-uppercase mt-0" title="Customers">PAGOS</h6>
+                    <h3 class="mt-1 mb-1">36,254</h3>
+                    <!-- <p class="mb-0">
                     <span class="badge badge-light-lighten me-1">
                         <i class="mdi mdi-arrow-up-bold"></i> 5.27%</span>
                     <span class="text-nowrap">Since last month</span>
-                </p>
+                </p> -->
+                </div>
             </div>
         </div>
-    </div> <!-- end col-->
 
+        <!-- end col-->
+        <!--
     <div class="col-xxl-3 col-sm-6">
         <div class="card widget-flat bg-primary text-white">
             <div class="card-body">
@@ -215,7 +238,7 @@
                 </p>
             </div>
         </div>
-    </div> <!-- end col-->
-</div>
+    </div>  end col-->
+    </div>
 
-@endsection
+    @endsection

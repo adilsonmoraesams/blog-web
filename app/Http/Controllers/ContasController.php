@@ -42,9 +42,9 @@ class ContasController extends Controller
         ]);
 
         $valor = $request->valor;
-        $valor = str_replace( '.', '', $valor);
-        $valor = str_replace( ',', '.', $valor);
-        $valor = (double) $valor;
+        $valor = str_replace('.', '', $valor);
+        $valor = str_replace(',', '.', $valor);
+        $valor = (float) $valor;
 
         try {
 
@@ -72,6 +72,8 @@ class ContasController extends Controller
 
     public function show(Contas $contas)
     {
+        return view('contas.contas-show')
+            ->with('contas', $contas);
     }
 
 
@@ -98,13 +100,11 @@ class ContasController extends Controller
 
     public function destroy(Contas $contas)
     {
-        try
-        {
+        try {
             $contas->delete();
 
             return redirect()->route('contas.index')
                 ->with('success', 'Conta excluída com sucesso!');
-
         } catch (\Exception $e) {
             // do task when error
             echo $e->getMessage();   // insert query

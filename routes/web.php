@@ -78,7 +78,6 @@ Route::middleware('auth')->group(function () {
     /**
      *  FINANCEIRO
     **/
-
     // Contas a Pagar/Receber
     Route::get('contas', [ContasController::class, 'index'])->name('contas.index');
     Route::get('contas/{contas}/show', [ContasController::class, 'show'])->name('contas.show');
