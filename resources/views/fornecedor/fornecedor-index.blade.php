@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 
-
 @section('content')
-
-
-
 
 <div class="row">
     <div class="col-12">
@@ -13,18 +9,16 @@
             <div class="page-title-right">
                 ?
             </div>
-            <h2 class="page-title">Controle de Produtos</h2>
+            <h2 class="page-title">Controle de Fornecedores</h2>
         </div>
     </div>
 </div>
-
 
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
     <p>{{ $message }}</p>
 </div>
 @endif
-
 
 <div class="row">
     <div class="col-xl-12">
@@ -34,7 +28,7 @@
                 <div class="row">
 
                     <div class="d-flex flex-row-start col">
-                        <form action="{{ route('products.index') }}" style="text-align:center" method="get">
+                        <form action="{{ route('fornecedor.index') }}" style="text-align:center" method="get">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Filtrar registros" aria-label="Filtrar registros" name="filtrar" id="filtrar" aria-describedby="button-addon2">
                                 <button class="btn btn-primary" type="submit">Filtrar</button>
@@ -44,8 +38,8 @@
                     <div class="d-flex flex-row-reverse col">
                         <form>
                             <div class="input-group mb-3">
-                                <a href="{{ route('products.create') }}" class="btn btn-primary">
-                                    Novo Produto
+                                <a href="{{ route('fornecedor.create') }}" class="btn btn-primary">
+                                    Novo Fornecedor
                                 </a>
                             </div>
                         </form>
@@ -59,31 +53,28 @@
                             <thead>
                                 <tr>
                                     <th width="120">#</th>
-                                    <th>Titulo</th>
-                                    <th width="120">Ativo</th>
+                                    <th>Fornecedor</th>
+                                    <th width="240">Fone</th>
                                     <th width="220" style="text-align:center">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($products as $product)
+                                @foreach ($fornecedores as $fornecedor)
                                 <tr>
                                     <td>
-                                        {{ $product->id }}
+                                        {{ $fornecedor->id }}
                                     </td>
                                     <td>
-                                        {{ $product->name }}
+                                        {{ $fornecedor->nome }}
                                     </td>
                                     <td>
-                                        <div>
-                                            <input type="checkbox" id="switch04" data-switch="success">
-                                            <label for="switch04" data-on-label="Sim" data-off-label="Não" class="mb-0 d-block"></label>
-                                        </div>
+                                        {{ $fornecedor->fone }}
                                     </td>
                                     <td class="table-action ">
-                                        <form action="{{ route('products.destroy', $product->id) }}" style="text-align:center" method="post">
+                                        <form action="{{ route('fornecedor.destroy', $fornecedor->id) }}" style="text-align:center" method="post">
 
-                                            <a class="btn btn-info" href="{{ route('products.show',$product->id) }}"><i class="mdi mdi-eye"></i></a>
-                                            <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}"><i class="mdi mdi-pencil"></i></a>
+                                            <a class="btn btn-info" href="{{ route('fornecedor.show', $fornecedor->id) }}"><i class="mdi mdi-eye"></i></a>
+                                            <a class="btn btn-primary" href="{{ route('fornecedor.edit',$fornecedor->id) }}"><i class="mdi mdi-pencil"></i></a>
 
                                             @csrf
                                             @method('DELETE')
@@ -103,7 +94,7 @@
             <!-- end card body-->
 
             <div class="card-footer">
-                {{ $products->links('pagination::bootstrap-5') }}
+                {{ $fornecedores->links('pagination::bootstrap-5') }}
             </div>
         </div> <!-- end card -->
     </div><!-- end col-->

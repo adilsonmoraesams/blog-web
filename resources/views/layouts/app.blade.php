@@ -27,7 +27,7 @@
         <div class="leftside-menu">
 
             <!-- LOGO -->
-            <a href="index.html" class="logo text-center logo-light">
+            <a href="{{ route('dashboard.index') }}" class="logo text-center logo-light">
                 <span class="logo-lg">
                     <img src="{{ asset('admin/assets/images/logo.png' ) }}" alt="" height="16">
                 </span>

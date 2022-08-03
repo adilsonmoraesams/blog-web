@@ -76,8 +76,6 @@ class CategoriasController extends Controller
 
     public function destroy(Categoria $categoria )
     {
-        $categoria ->delete();
-
         return redirect()->route('categorias.index')
             ->with('success', 'Usuário excluído com sucesso!');
     }
