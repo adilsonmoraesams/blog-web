@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fornecedor', function (Blueprint $table) {
+        Schema::create('forma_pagamento', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('fone');
-            $table->text('descricao')->nullable();
-            $table->boolean('ativo')->default(1);
+            $table->string('descricao', 100);
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fornecedor');
+        Schema::dropIfExists('forma_pagamento');
     }
 };

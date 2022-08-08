@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fornecedor', function (Blueprint $table) {
+        Schema::create('conta_banco', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('fone');
-            $table->text('descricao')->nullable();
-            $table->boolean('ativo')->default(1);
+            $table->string('banco', 100);
+            $table->string('cod_banco', 10);
+            $table->string('agencia', 15);
+            $table->string('conta', 15);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fornecedor');
+        Schema::dropIfExists('conta_banco');
     }
 };

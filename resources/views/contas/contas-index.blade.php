@@ -65,6 +65,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($contas as $conta)
                                 <tr>
                                     <td>
@@ -131,6 +132,19 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th class="text-center">{{ 'R$ '.number_format( $entradas, 2, ',', '.') }}</th>
+                                    <th class="text-center">{{ 'R$ '.number_format( $saidas, 2, ',', '.') }}</th>
+                                    <th class="text-center">Pago</th>
+                                    <th style="text-align:center"></th>
+                                </tr>
+                            </thead>
                         </table>
                     </div> <!-- end table-responsive-->
                 </div> <!-- end tab-content-->
@@ -145,7 +159,7 @@
     </div><!-- end col-->
 </div>
 
-
+<!--
 
 
 <div class="row">
@@ -158,15 +172,14 @@
                 <h5 class="text-muted fw-normal mt-0" title="Revenue">Contas a Receber</h5>
                 <h3 class="mt-1 mb-1">
                     {{ 'R$ '.number_format( $entradas, 2, ',', '.') }}
-                </h3>
-                <!-- <p class="mb-0 text-muted">
+                </h3>  <p class="mb-0 text-muted">
                     <span class="badge bg-info me-1">
                         <i class="mdi mdi-arrow-down-bold"></i> 7.00%</span>
                     <span class="text-nowrap">Since last month</span>
-                </p> -->
+                </p>
             </div>
         </div>
-    </div> <!-- end col-->
+    </div>
 
     <div class="col-xxl-3 col-sm-6">
         <div class="card widget-flat bg-primary text-white ">
@@ -176,11 +189,11 @@
                 </div>
                 <h6 class="text-uppercase mt-0" title="Customers">RECEBIDOS</h6>
                 <h3 class="mt-1 mb-1">36,254</h3>
-                <!-- <p class="mb-0">
+                <p class="mb-0">
                 <span class="badge badge-light-lighten me-1">
                     <i class="mdi mdi-arrow-up-bold"></i> 5.27%</span>
                 <span class="text-nowrap">Since last month</span>
-            </p> -->
+            </p>
             </div>
         </div>
     </div>
@@ -195,15 +208,14 @@
                         <h3 class="mt-1 mb-1">
                             {{ 'R$ '.number_format( $saidas, 2, ',', '.') }}
                         </h3>
-                        <!-- <p class="mb-0 text-muted">
+                        <p class="mb-0 text-muted">
                     <span class="text-success me-2">
                         <i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
                     <span class="text-nowrap">Since last month</span>
-                </p> -->
+                </p>
                 </div>
             </div>
-        </div> <!-- end col-->
-
+        </div>
         <div class="col-xxl-3 col-sm-6">
             <div class="card widget-flat bg-danger text-white">
                 <div class="card-body">
@@ -212,17 +224,15 @@
                     </div>
                     <h6 class="text-uppercase mt-0" title="Customers">PAGOS</h6>
                     <h3 class="mt-1 mb-1">36,254</h3>
-                    <!-- <p class="mb-0">
+                    <p class="mb-0">
                     <span class="badge badge-light-lighten me-1">
                         <i class="mdi mdi-arrow-up-bold"></i> 5.27%</span>
                     <span class="text-nowrap">Since last month</span>
-                </p> -->
+                </p>
                 </div>
             </div>
         </div>
 
-        <!-- end col-->
-        <!--
     <div class="col-xxl-3 col-sm-6">
         <div class="card widget-flat bg-primary text-white">
             <div class="card-body">
@@ -238,7 +248,7 @@
                 </p>
             </div>
         </div>
-    </div>  end col-->
+    </div>end col-->
     </div>
 
     @endsection

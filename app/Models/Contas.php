@@ -67,4 +67,9 @@ class Contas extends Model
     // }
 
 
+
+    public function movimentos()
+    {
+        return $this->hasMany(Movimento::class, 'contas_id');
+    }
 }

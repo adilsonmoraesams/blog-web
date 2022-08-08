@@ -4,6 +4,7 @@ use App\Http\Controllers\AgenciaController;
 use App\Http\Controllers\ContasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\MovimentoController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SubCategoriasController;
 use App\Http\Controllers\UsuariosController;
@@ -38,7 +39,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('usuarios', UsuariosController::class);
 
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('home', [DashboardController::class, 'index'])->name('dashboard.index');
 
     // Route::resource('produto', ProdutoController::class);
     // Route::resource('categorias', CategoriasController::class);
@@ -86,5 +87,10 @@ Route::middleware('auth')->group(function () {
     Route::get('contas/{contas}/edit', [ContasController::class, 'edit'])->name('contas.edit');
     Route::put('contas/{contas}', [ContasController::class, 'update'])->name('contas.update');
     Route::delete('contas/{contas}', [ContasController::class, 'destroy'])->name('contas.destroy');
+
+
+    // Movimento (Pagamentos)
+    Route::post('movimentos/store/{contas}', [ MovimentoController::class, 'store'])->name('movimento.store');
+    Route::delete('movimentos/{movimento}', [ MovimentoController::class, 'destroy'])->name('movimento.destroy');
 
 });

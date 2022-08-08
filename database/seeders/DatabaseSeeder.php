@@ -28,5 +28,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
+        $this->call(ContaBancoTableSeeder::class);
+        $this->call(FormaPagamentoTableSeeder::class);
+        $this->call(ContasTableSeeder::class);
+
     }
 }

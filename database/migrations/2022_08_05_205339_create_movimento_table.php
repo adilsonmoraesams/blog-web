@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Contas;
+use App\Models\FormaPagamento;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +15,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fornecedor', function (Blueprint $table) {
+        Schema::create('movimento', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('fone');
-            $table->text('descricao')->nullable();
-            $table->boolean('ativo')->default(1);
+            $table->string('descricao');
+            $table->foreignIdFor(Contas::class);
+            $table->foreignIdFor(FormaPagamento::class);
+            $table->string('valorPago');
+            $table->string('valorTaxa');
+            $table->double('valor');
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fornecedor');
+        Schema::dropIfExists('movimento');
     }
 };

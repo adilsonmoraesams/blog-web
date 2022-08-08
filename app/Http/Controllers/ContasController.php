@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contas;
+use App\Models\FormaPagamento;
 use Faker\Core\Number;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Type\Decimal;
@@ -13,7 +14,7 @@ class ContasController extends Controller
     public function index()
     {
         $query = Contas::query();
-        $contas = $query->latest()->paginate(10);
+        $contas = $query->latest()->paginate(8);
 
         $saidas = Contas::where('tipoConta', 'P')->sum('valor');
         $entradas = Contas::where('tipoConta', 'R')->sum('valor');
@@ -72,7 +73,10 @@ class ContasController extends Controller
 
     public function show(Contas $contas)
     {
+        $formaPagamento = FormaPagamento::get();
+
         return view('contas.contas-show')
+            ->with('formaPagamento', $formaPagamento)
             ->with('contas', $contas);
     }
 
